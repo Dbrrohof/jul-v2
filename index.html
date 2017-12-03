@@ -25,7 +25,7 @@
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
+<body onload="skammekrog(); checkLogin();">
 	<div class="container-fluid" id="wrapper">
 		<div class="row">
 			<nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
@@ -35,11 +35,11 @@
 				
 				<ul class="nav nav-pills flex-column sidebar-nav">
 					<li class="nav-item"><a class="nav-link active" href="index.html"><em class="fa fa-eye"></em> Oversigt <span class="sr-only">(current)</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="lottery.html"><em class="fa fa-ticket"></em> Lottery</a></li>
+					<li class="nav-item"><a class="nav-link" href="lottery.html"><em class="fa fa-ticket"></em> Træk en nisse</a></li>
 					<li class="nav-item"><a class="nav-link" href="wishlists.html"><em class="fa fa-file-text"></em> Ønskelister</a></li>
 				</ul>
 				
-				<a href="#" class="logout-button"><em class="fa fa-power-off"></em> Log Ud</a></nav>
+				<a href="#" class="logout-button" onclick="logOut()"><em class="fa fa-power-off"></em> Log Ud</a></nav>
 			
 			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
 				<header class="page-header row justify-center">
@@ -53,13 +53,13 @@
 						<div class="username mt-1">
 							<h4 class="mb-1">David</h4>
 							
-							<h6 class="text-muted">Nisse (Admin)</h6>
+							<h6 class="text-muted">Nisse</h6>
 						</div>
 						</a>
 						
 						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
 						     <a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Skift kodeord</a>
-						     <a class="dropdown-item" href="#"><em class="fa fa-power-off mr-1"></em> Log ud</a></div>
+						     <a class="dropdown-item" href="#" onclick="logOut()"><em class="fa fa-power-off mr-1"></em> Log ud</a></div>
 						</div>
 					
 					<div class="clear"></div>
@@ -70,20 +70,20 @@
 						<section class="row">
 							<div class="col-md-12 col-lg-8">
 								<div class="jumbotron">
-									<h1 class="mb-4">Hej, David!</h1>
+									<h1 class="mb-4" id="greeting">Hej</h1>
 									<p class="lead">Du har endnu ikke trukket en nisse!</p>				
-									<p class="lead"><a class="btn btn-primary btn-lg mt-2" href="/lottery.html" role="button">Træk i lotteriet</a></p>
+									<p class="lead"><a class="btn btn-primary btn-lg mt-2" href="/lottery.html" role="button">Træk !</a></p>
 								</div>
 							</div>
 							
 							<div class="col-md-12 col-lg-4">
 								<div class="card mb-4">
-									<div class="card-block">
+									<div class="card-block" id="skammekrog">
 										<h3 class="card-title">Skammekrogen</h3>
 										
 										<h6 class="card-subtitle mb-2 text-muted">Brugere der mangler at trække</h6>
 										
-										<div class="user-progress justify-center">
+										<!-- <div class="user-progress justify-center">
 											<div class="col-sm-3 col-md-2" style="padding: 0;">
 												<img src="images/profile-pic2.png" alt="profile photo" class="circle profile-photo" style="width: 100%; max-width: 100px;">
 											</div>
@@ -113,7 +113,22 @@
 												<h6 class="pt-1">Username 3</h6>
 											</div>
 											
-										</div>
+										</div> -->
+
+										<div class="sk-circle" id="spinner2">
+											<div class="sk-circle1 sk-child"></div>
+											<div class="sk-circle2 sk-child"></div>
+											<div class="sk-circle3 sk-child"></div>
+											<div class="sk-circle4 sk-child"></div>
+											<div class="sk-circle5 sk-child"></div>
+											<div class="sk-circle6 sk-child"></div>
+											<div class="sk-circle7 sk-child"></div>
+											<div class="sk-circle8 sk-child"></div>
+											<div class="sk-circle9 sk-child"></div>
+											<div class="sk-circle10 sk-child"></div>
+											<div class="sk-circle11 sk-child"></div>
+											<div class="sk-circle12 sk-child"></div>
+										  </div>
 																			
 									</div>
 								</div>
@@ -133,27 +148,18 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="dist/js/bootstrap.min.js"></script>
-    
+	<script src="dist/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+	
+	<script src="js/main.js"></script>
     <script src="js/chart.min.js"></script>
     <script src="js/chart-data.js"></script>
     <script src="js/easypiechart.js"></script>
     <script src="js/easypiechart-data.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/custom.js"></script>
-    <script>
-	    window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
-	</script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     
-	  </body>
+	</body>
 </html>

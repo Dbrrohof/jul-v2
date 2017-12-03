@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<meta name="description" content="">
+	
+	<meta name="author" content="">
+	
+	<link rel="icon" href="images/favicon.ico">
+	
+	<title>Medialoot Bootstrap 4 Dashboard Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+        <div style="display: none;" id="error" class="alert bg-danger" role="alert"><em class="fa fa-minus-circle mr-2"></em> Forkert brugernavn eller kodeord <a href="#" class="float-right"><em class="fa fa-remove"></em></a></div>
+        <form class="form-signin" data-bitwarden-watching="1">
+            <h2 class="form-signin-heading">Log in</h2>
+            <label for="inputEmail" class="sr-only">Fornavn</label>
+            <input type="text" id="inputName" class="form-control" placeholder="Fornavn" required="" autofocus="">
+            <label for="inputPassword" class="sr-only">Kodeord</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Kodeord" required="">
+            <div class="checkbox">
+                <label>
+                <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="button" onclick="login()">Sign in</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+	<script src="dist/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+	
+    <script src="js/main.js"></script>
+    
+    <script>
+
+        var users = firebase.database().ref('users');
+
+
+        function login() {
+
+            let name = $('#inputName').val();
+            let pass = $('#inputPassword').val();
+
+            return firebase.database().ref('/users/' + name).once('value').then(function(snapshot) {
+            if (snapshot.val()) {
+                if (pass == snapshot.val().password) {
+                    localStorage.setItem("loggedIn", true);
+                    localStorage.setItem("name", name);
+                    localStorage.setItem("pass", pass);
+                    window.location = "/";
+                } else {
+                    document.getElementById('error').style.display = "block";
+                }
+            } else {
+                document.getElementById('error').style.display = "block";
+            }
+	});
+
+        }
+    </script>
+	</body>
+</html>
