@@ -700,3 +700,6 @@ input[type=checkbox]:checked + label {
 .name {
   text-transform: capitalize;
 }
+.nisseName{
+  text-transform: capitalize;
+}

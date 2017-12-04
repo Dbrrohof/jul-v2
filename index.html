@@ -23,13 +23,16 @@
     <link href="css/font-awesome.css" rel="stylesheet">
     
     <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	
+	<!-- Firebase load first -->
+	<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
 </head>
 <body onload="skammekrog(); checkLogin();">
 	<div class="container-fluid" id="wrapper">
 		<div class="row">
 			<nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
-				<h1 class="site-title"><a href="index.html"><em class="fa fa-snowflake-o"></em> Nisse Lottery</a></h1>
+				<h1 class="site-title"><a href="index.html"><em class="fa fa-snowflake-o"></em> Nisse Trækning</a></h1>
 				
 				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
 				
@@ -51,7 +54,7 @@
 						<img src="images/profile-pic2.png" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
 						
 						<div class="username mt-1">
-							<h4 class="mb-1">David</h4>
+							<h4 class="mb-1" id="userName"></h4>
 							
 							<h6 class="text-muted">Nisse</h6>
 						</div>
@@ -69,10 +72,27 @@
 					<div class="col-sm-12">
 						<section class="row">
 							<div class="col-md-12 col-lg-8">
-								<div class="jumbotron">
+								<div class="jumbotron" id="status">
 									<h1 class="mb-4" id="greeting">Hej</h1>
-									<p class="lead">Du har endnu ikke trukket en nisse!</p>				
-									<p class="lead"><a class="btn btn-primary btn-lg mt-2" href="/lottery.html" role="button">Træk !</a></p>
+									<div id="error" style="display: none;">
+										<p class="lead">Du har endnu ikke trukket en nisse!</p>				
+										<p class="lead"><a class="btn btn-primary btn-lg mt-2" href="/lottery.html" role="button">Træk !</a></p>
+									</div>
+									
+									<div class="sk-circle" id="spinner">
+										<div class="sk-circle1 sk-child"></div>
+										<div class="sk-circle2 sk-child"></div>
+										<div class="sk-circle3 sk-child"></div>
+										<div class="sk-circle4 sk-child"></div>
+										<div class="sk-circle5 sk-child"></div>
+										<div class="sk-circle6 sk-child"></div>
+										<div class="sk-circle7 sk-child"></div>
+										<div class="sk-circle8 sk-child"></div>
+										<div class="sk-circle9 sk-child"></div>
+										<div class="sk-circle10 sk-child"></div>
+										<div class="sk-circle11 sk-child"></div>
+										<div class="sk-circle12 sk-child"></div>
+									  </div>
 								</div>
 							</div>
 							
@@ -149,8 +169,9 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-3.2.1.min.js"></script>
 	<script src="dist/js/bootstrap.min.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
 	
+	<script src="js/index.js"></script>
+
 	<script src="js/main.js"></script>
     <script src="js/chart.min.js"></script>
     <script src="js/chart-data.js"></script>

@@ -23,9 +23,10 @@
     <link href="css/font-awesome.css" rel="stylesheet">
     
     <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	
 </head>
-<body>
+<body onload="getWishlists();">
 	<div class="container-fluid" id="wrapper">
 		<div class="row">
 			<nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
@@ -66,6 +67,17 @@
 				</header>
 				
 				<section class="row">
+						<div class="col-md-12 col-lg-12">						
+								<div class="card mb-4">
+									<div class="card-block">
+										<h3 class="card-title">Upload dine ønsker</h3>
+
+										<input type="file" id="inputFile">
+											
+										<button type="button" class="btn btn-primary btn-lg mt-2" onclick="upload()">Upload</button>
+									</div>
+								</div>
+							</div>
 					<div class="col-md-12 col-lg-12">						
 						<div class="card mb-4">
 							<div class="card-block">
@@ -97,15 +109,23 @@
 										</thead>
 										
 										<tbody id="tbody">
-											<!-- <tr>
-												<td>Nicolai</td>
-												
-												<td>
-													<a class="btn btn-primary btn-sm" href="#" role="button">Download</a>
-												</td>
-											</tr> -->
+											
 										</tbody>
 									</table>
+									<div class="sk-circle" id="spinner">
+										<div class="sk-circle1 sk-child"></div>
+										<div class="sk-circle2 sk-child"></div>
+										<div class="sk-circle3 sk-child"></div>
+										<div class="sk-circle4 sk-child"></div>
+										<div class="sk-circle5 sk-child"></div>
+										<div class="sk-circle6 sk-child"></div>
+										<div class="sk-circle7 sk-child"></div>
+										<div class="sk-circle8 sk-child"></div>
+										<div class="sk-circle9 sk-child"></div>
+										<div class="sk-circle10 sk-child"></div>
+										<div class="sk-circle11 sk-child"></div>
+										<div class="sk-circle12 sk-child"></div>
+									  </div>
 								</div>
 							</div>
 						</div>
@@ -125,6 +145,8 @@
     <script src="dist/js/bootstrap.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
 	
+	<script src="js/wishlist.js"></script>
+
 	<script src="js/main.js"></script>
     <script src="js/chart.min.js"></script>
     <script src="js/chart-data.js"></script>
@@ -134,34 +156,10 @@
 	<script src="js/custom.js"></script>
 	
 	<script>
-		
-	var wishlists = firebase.database().ref('wishlists');
-	// get wishlists
-	wishlists.on('value', function(snapshot) {
-		wishlistsArray = snapshot.val();
-		getWishlists();
-	});
 	
-	function getWishlists() {
-		let table = $('tbody');
-		for (var key in wishlistsArray) {
-		//   let listItem = document.createElement('li')
-		//   listItem.innerHTML = '<a href="' + wishlistsArray[key].downloadurl + '" class="list-group-item" target="_blank">' + key + '</a>';
-		//   listOfWishlists.appendChild(listItem);
-		table.append(`
-		<tr>
-			<td>${key}</td>
-			
-			<td>
-				<a class="btn btn-primary btn-sm" href="${wishlistsArray[key].downloadurl}" role="button" target="_blank">Download</a>
-			</td>
-		</tr>	
-		`);
-		}
-	}
 	</script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     
-	  </body>
+	</body>
 </html>
