@@ -39,7 +39,7 @@
 					<li class="nav-item"><a class="nav-link" href="wishlists.html"><em class="fa fa-file-text"></em> Ønskelister</a></li>
 				</ul>
 				
-				<a href="#" class="logout-button"><em class="fa fa-power-off"></em> Log Ud</a></nav>
+				<a href="#" onclick="logOut()" class="logout-button"><em class="fa fa-power-off"></em> Log Ud</a></nav>
 			
 			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
 				<header class="page-header row justify-center">
@@ -59,7 +59,7 @@
 						
 						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
 						     <a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Skift kodeord</a>
-						     <a class="dropdown-item" href="#"><em class="fa fa-power-off mr-1"></em> Log ud</a></div>
+						     <a class="dropdown-item" onclick="logOut()" href="#"><em class="fa fa-power-off mr-1"></em> Log ud</a></div>
 						</div>
 					
 					<div class="clear"></div>
@@ -80,7 +80,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
-    
+	
+	<script src="js/main.js"></script>
     <script src="js/chart.min.js"></script>
     <script src="js/chart-data.js"></script>
     <script src="js/easypiechart.js"></script>

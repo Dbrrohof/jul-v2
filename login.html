@@ -32,12 +32,12 @@
         <form class="form-signin" data-bitwarden-watching="1">
             <h2 class="form-signin-heading">Log in</h2>
             <label for="inputEmail" class="sr-only">Fornavn</label>
-            <input type="text" id="inputName" class="form-control" placeholder="Fornavn" required="" autofocus="">
+            <input type="text" id="inputName" class="form-control" placeholder="Fornavn" required="" autofocus="" onkeydown = "if (event.keyCode == 13) login()">
             <label for="inputPassword" class="sr-only">Kodeord</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Kodeord" required="">
+            <input type="password" id="inputPassword" class="form-control" placeholder="Kodeord" required="" onkeydown = "if (event.keyCode == 13) login()">
             <div class="checkbox">
                 <label>
-                <input type="checkbox" value="remember-me"> Remember me
+                <input type="checkbox" value="remember-me"> Husk mig
                 </label>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="button" onclick="login()">Sign in</button>
@@ -49,36 +49,10 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-3.2.1.min.js"></script>
 	<script src="dist/js/bootstrap.min.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
-	
+    <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+    
+	<script src="js/login.js"></script>
     <script src="js/main.js"></script>
     
-    <script>
-
-        var users = firebase.database().ref('users');
-
-
-        function login() {
-
-            let name = $('#inputName').val();
-            let pass = $('#inputPassword').val();
-
-            return firebase.database().ref('/users/' + name).once('value').then(function(snapshot) {
-            if (snapshot.val()) {
-                if (pass == snapshot.val().password) {
-                    localStorage.setItem("loggedIn", true);
-                    localStorage.setItem("name", name);
-                    localStorage.setItem("pass", pass);
-                    window.location = "/";
-                } else {
-                    document.getElementById('error').style.display = "block";
-                }
-            } else {
-                document.getElementById('error').style.display = "block";
-            }
-	});
-
-        }
-    </script>
 	</body>
 </html>

@@ -117,7 +117,7 @@ p {
   color: #c0392b !important; }
 
 .dropdown-item.active, .dropdown-item:active, .custom-control-input:checked ~ .custom-control-indicator, .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-indicator, .nav-pills .nav-item.show .nav-link, .badge-primary, .progress-bar, .bg-primary {
-  background-color: #7376df !important;
+  background-color: #c0392b !important;
   background-image: none; }
 
 .nav-pills .nav-link.active, .badge-primary[href]:focus, .badge-primary[href]:hover, a.bg-primary:focus, a.bg-primary:hover {
@@ -382,7 +382,10 @@ p {
   margin-top: -.25rem; }
 
 .progress-bar {
-  height: .3rem; }
+    -webkit-transition: width 1.0s ease-in-out !important;
+       -moz-transition: width 1.0s ease-in-out !important;
+         -o-transition: width 1.0s ease-in-out !important;
+            transition: width 1.0s ease-in-out !important; }
 
 #calendar, .datepicker-inline {
   width: 100%;
@@ -702,4 +705,62 @@ input[type=checkbox]:checked + label {
 }
 .nisseName{
   text-transform: capitalize;
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #7ac142;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 10% auto;
+  box-shadow: inset 0px 0px 0px #7ac142;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+
+.countdownObj {
+  background-color: #c0392b;
+  border-radius: 10px;
+  min-width: 60px;
+  color: white;
+  display: inline-block;
+  font-size: 2em;
 }

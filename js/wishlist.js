@@ -9,6 +9,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var currentUser = localStorage.getItem("name");
 var wishlists = firebase.database().ref('wishlists');
 
 var wishlistsArray = [];
@@ -21,6 +22,7 @@ wishlists.on('value', function(snapshot) {
 function getWishlists() {
     if (!$.isEmptyObject(wishlistsArray)) {
         let table = $('tbody');
+        table.html("");
         for (var key in wishlistsArray) {
             table.append(`
             <tr>
@@ -37,9 +39,38 @@ function getWishlists() {
 }
 
 function upload() {
+    // GET FILE
     let file = document.getElementById("inputFile").files[0];
     let metadata = {
         contentType: file.type,
     };
-    console.log(metadata);
+
+    // Create a storage ref
+    let storageRef = firebase.storage().ref('wishlists/' + currentUser)
+
+    // Upload file
+    var task = storageRef.put(file);
+
+    // Confirmation to user
+    task.on('state_changed', 
+    
+        function (snapshot) {
+            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            // console.log(percentage);
+            let progress = $('#progress');
+            progress.html(percentage + '%');
+            progress.attr("aria-valuenow", percentage);
+            progress.width(percentage + '%');
+        },
+        function(err) {
+            
+        },
+        function() {
+            let downloadurl = task.snapshot.downloadURL;
+            firebase.database().ref('wishlists/' + currentUser).update({
+            downloadurl
+            });
+        }    
+
+    );
 }
