@@ -38,7 +38,7 @@ function skammekrog() {
     });
 }
 
-function checkLogin() {
+function checkLogin2() {
     if (currentUser) {
         $('#greeting').html(`Hej, <span class="name">${currentUser}</span>`);
         $('#userName').html(`<span class="name">${currentUser}</span>`);

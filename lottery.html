@@ -11,7 +11,7 @@
 	
 	<link rel="icon" href="images/favicon.ico">
 	
-	<title>Medialoot Bootstrap 4 Dashboard Template</title>
+	<title>Julelodtrækning</title>
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
+<body onload="checkLogin();">
 	<div class="container-fluid" id="wrapper">
 		<div class="row">
 			<nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
@@ -51,9 +51,9 @@
 						<img src="images/profile-pic2.png" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
 						
 						<div class="username mt-1">
-							<h4 class="mb-1">David</h4>
+							<h4 class="mb-1" id="userName"></h4>
 							
-							<h6 class="text-muted">Nisse (Admin)</h6>
+							<h6 class="text-muted">Nisse</h6>
 						</div>
 						</a>
 						
