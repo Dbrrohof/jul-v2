@@ -11,6 +11,7 @@ firebase.initializeApp(config);
 
 var currentUser = localStorage.getItem("name");
 var wishlists = firebase.database().ref('wishlists');
+var userdb = firebase.database().ref("users");
 
 var wishlistsArray = [];
 // get wishlists
@@ -73,4 +74,31 @@ function upload() {
         }    
 
     );
+}
+
+function saveLink() {
+    let link = document.getElementById('wishlistUrl').value;
+    
+    if (link == "") {
+    console.log('err')
+    }
+    else {
+        firebase.database().ref('wishlists/' + currentUser).update({
+            downloadurl: link
+        }, function() {
+            // callback
+            document.getElementById('wishlistUrl').value = "";
+            $('#saveLinkBtn').addClass( "confirmUpload" ).html("&nbsp;")
+            setTimeout(function() {
+                $('#saveLinkBtn').html('<div class="animated jackInTheBox">✔️</div>')
+            }, 1000);
+            setTimeout(function() {
+                $('#saveLinkBtn').removeClass("confirmUpload")
+                setTimeout(function() {
+                    $('#saveLinkBtn').html('Gem link')
+                }, 1000);
+            }, 4000);
+        });
+        // console.log('updated')
+    }
 }
