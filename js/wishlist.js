@@ -27,7 +27,7 @@ function getWishlists() {
         for (var key in wishlistsArray) {
             table.append(`
             <tr>
-                <td>${key}</td>
+                <td class="nameCap">${key}</td>
                 
                 <td>
                     <a class="btn btn-primary btn-sm" href="${wishlistsArray[key].downloadurl}" role="button" target="_blank">Download</a>

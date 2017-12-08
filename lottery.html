@@ -29,7 +29,7 @@
 	<div class="container-fluid" id="wrapper">
 		<div class="row">
 			<nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
-				<h1 class="site-title"><a href="index.html"><em class="fa fa-snowflake-o"></em> Nisse Lottery</a></h1>
+				<h1 class="site-title"><a href="index.html"><em class="fa fa-snowflake-o"></em> Nisse Trækning</a></h1>
 				
 				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
 				
@@ -44,7 +44,7 @@
 			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
 				<header class="page-header row justify-center">
 					<div class="col-md-6 col-lg-8" >
-						<h1 class="float-left text-center text-md-left">Lottery</h1>
+						<h1 class="float-left text-center text-md-left">Træk en nisse 🎅</h1>
 					</div>
 					
 					<div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -66,7 +66,43 @@
 				</header>
 				
 				<section class="row">
-					
+					<div class="col-md-12 col-lg-12">						
+						<div class="card mb-4">
+							<div class="card-block text-center">
+								<div class="noNisse" style="display: none;">
+									<h1 class="display-3">Du har ikke trukket endnu!</h1>
+									<h4>Skynd dig at komme ud af skammekrogen</h4>
+
+									<button type="button" class="btn btn-lg btn-success mt-5 pickBtn" onclick="getAnswer()" id="pickBtn">Træk en nisse!</button>						
+								</div>
+								<div class="findNisse" style="display: none;">
+									<h1 class="display-4">Du er nisse for</h1>
+									<hr>
+									<h1 class="codeReveal" id="codeReveal"></h1>
+								</div>
+								<div class="foundNisse" style="display: none;">
+										<h1 class="display-4">Du er nisse for</h1>
+										<hr>
+										<h1 class="codeReveal" id="foundNisse"></h1>
+								</div>
+
+								<div class="sk-circle" id="spinner">
+										<div class="sk-circle1 sk-child"></div>
+										<div class="sk-circle2 sk-child"></div>
+										<div class="sk-circle3 sk-child"></div>
+										<div class="sk-circle4 sk-child"></div>
+										<div class="sk-circle5 sk-child"></div>
+										<div class="sk-circle6 sk-child"></div>
+										<div class="sk-circle7 sk-child"></div>
+										<div class="sk-circle8 sk-child"></div>
+										<div class="sk-circle9 sk-child"></div>
+										<div class="sk-circle10 sk-child"></div>
+										<div class="sk-circle11 sk-child"></div>
+										<div class="sk-circle12 sk-child"></div>
+									  </div>
+							</div>
+						</div>
+					</div>
 				</section>
 				<section class="row">
 						<div class="col-12 mt-1 mb-4">Copyright @ <a href="https://www.rohof.dk">Rohof</a></div>
@@ -80,7 +116,10 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
 	
+	<script src="js/lottery.js"></script>
+
 	<script src="js/main.js"></script>
     <script src="js/chart.min.js"></script>
     <script src="js/chart-data.js"></script>
@@ -88,17 +127,6 @@
     <script src="js/easypiechart-data.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/custom.js"></script>
-    <script>
-	    window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
-	</script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     

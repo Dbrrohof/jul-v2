@@ -295,6 +295,9 @@ p {
   #wrapper .sidebar-nav {
     display: none; }
 
+  #wrapper .logout-button {
+    display: none; }
+
   #wrapper.toggled .sidebar-nav {
     display: block !important; }
 
@@ -798,6 +801,34 @@ input[type=checkbox]:checked + label {
   animation-duration: .75s;
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  animation-name: fadeOut;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
 @keyframes jackInTheBox {
   from {
     opacity: 0;
@@ -822,3 +853,33 @@ input[type=checkbox]:checked + label {
 .jackInTheBox {
   animation-name: jackInTheBox;
 }
+
+.nameCap {
+  text-transform: capitalize;
+}
+
+.pickBtn {
+  width: 100%;
+  min-height: 51px;
+}
+
+.pickBtnNew {
+  width: 0;
+  padding: 0;
+}
+
+.codeReveal {
+  font-size: 6vw;
+  color: #000;
+}
+.codeReveal:before {
+  content: attr(data-before);
+  word-break: break-all;
+  opacity: 0.5;
+}
+.codeReveal:after {
+  content: attr(data-after);
+  word-break: break-all;
+  opacity: 0.5;
+}
+
